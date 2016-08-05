@@ -3,10 +3,10 @@ package com.sarbacane.webhook.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WebHook {
-	private String id;
+	@JsonProperty("id")
+	private String webHookId;
 
-	@JsonProperty("name")
-	private String displayName;
+	private String name;
 	private String email;
 	private String kind;
 
@@ -15,20 +15,20 @@ public class WebHook {
 	private String category;
 	private Integer returnCode;
 
-	public String getId() {
-		return id;
+	public String getWebHookId() {
+		return webHookId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setWebHookId(String webHookId) {
+		this.webHookId = webHookId;
 	}
 
-	public String getDisplayName() {
-		return displayName;
+	public String getName() {
+		return name;
 	}
 
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {

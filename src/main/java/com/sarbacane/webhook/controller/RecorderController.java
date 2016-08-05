@@ -5,6 +5,7 @@ import com.sarbacane.webhook.repository.WebHookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -21,8 +22,7 @@ public class RecorderController {
 
 	@ResponseStatus(ACCEPTED)
 	@RequestMapping(method = POST, value = "record")
-	public void record(WebHook webHook) throws IOException {
+	public void record(@RequestBody WebHook webHook) throws IOException {
 		webHookRepository.insert(webHook);
-
 	}
 }

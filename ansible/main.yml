@@ -3,10 +3,10 @@
    sudo: yes
    roles:
    - role: revo-app
-     xmx: 128m
-     xms: 256m
-     jmx_port: 12345
-     debug_port: 6666
+     xmx: 256m
+     xms: 128m
+     jmx_port: 22345
+     debug_port: 7666
      tags: install
      app_name: webhook-recorder
 
@@ -21,5 +21,5 @@
          - server_name recorder.sarbacane.com
          - location / {
          - proxy_pass http://localhost:8080/
-         - }
-     tags: [install,nginx]
+         - "}"
+     tags: nginx
