@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: webhook-recorder
+  data:
+    mongodb:
+      database: webhook

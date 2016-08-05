@@ -1,0 +1,16 @@
+galaxy_info:
+  author: "Loïc Dreux"
+  description: Install a new Revo application
+  company: Sarbacane Software
+  
+  license: BSD
+  
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
+
+dependencies: []

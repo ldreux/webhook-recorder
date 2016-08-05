@@ -1,0 +1,28 @@
+---
+- name: Create group java
+  group: name=java state=present
+
+- name: Create user java
+  user: name=java comment="Java" groups=java
+
+- name: Create directories
+  file: path={{revo_app_dir}}/{{item}} state=directory owner=java
+  with_items:
+    - bin
+    - conf
+    - jar
+
+- name: Install init.d script
+  template: src=init.d.j2 dest=/etc/init.d/sr-{{app_name}} mode=0755
+
+- name: Install bin script
+  template: src=bin.j2 dest=/opt/sr-{{app_name}}/bin/sr-{{app_name}} mode=0755
+
+- name: Install logback config
+  template: src=logback.xml.j2 dest=/opt/sr-{{app_name}}/conf/logback.xml owner=java mode=0755
+
+- name: Create log directory
+  file: path=/var/log/sr-{{app_name}}/ state=directory owner=java
+
+- name: Enable service
+  service: name=sr-{{app_name}} enabled=yes

@@ -1,0 +1,5 @@
+- src: git+ssh://git@git.sarbacane.com/sarbacane-software/ansible-role-revo-app.git
+  version: master
+  path: roles
+  name: revo-app
+- name: jdauphant.nginx

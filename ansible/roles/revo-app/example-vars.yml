@@ -1,0 +1,5 @@
+---
+app_name: "api"
+debug_port: 6668
+jmx_port: 12348
+

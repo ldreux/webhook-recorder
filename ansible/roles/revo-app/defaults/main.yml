@@ -1,0 +1,6 @@
+---
+revo_app_dir: "/opt/sr-{{app_name}}/"
+debug_port: 6666
+jmx_port: 12345
+xmx: 1024m
+xms: 512m

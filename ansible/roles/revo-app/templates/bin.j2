@@ -1,0 +1,12 @@
+#!/bin/bash
+
+APP=sr-{{app_name}}
+Jar_Dir="/opt/$APP/jar"
+Jar=$(ls -1A /opt/$APP/jar/*.jar)
+
+JAVA_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address={{debug_port}}"
+JAVA_OPTS="$JAVA_OPTS -Djava.awt.headless=true -Xms{{xms}} -Xmx{{xmx}} -XX:+UseConcMarkSweepGC"
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port={{jmx_port}} -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+
+exec java -jar $JAVA_OPTS -Dlogging.config=/opt/$APP/conf/logback.xml "$Jar" --spring.config.location=/opt/$APP/conf/application.yml > /var/log/$APP/$APP.out 2>&1
+
