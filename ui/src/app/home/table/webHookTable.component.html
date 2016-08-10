@@ -1,0 +1,19 @@
+<table class="table table-striped table-bordered dataTable"
+	   role="grid" style="width: 100%;">
+	<thead>
+	<tr role="row">
+		<th>Date</th>
+		<th>Email</th>
+		<th>Type</th>
+		<th>Send</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let row of rows" (click)="onShowDetail(row)">
+		<td>{{getData(row, 'insertDate') | date:'medium'}}</td>
+		<td>{{getData(row, 'email')}}</td>
+		<td>{{getData(row, 'type')}}</td>
+		<td>{{getData(row, 'sendId')}}</td>
+	</tr>
+	</tbody>
+</table>
