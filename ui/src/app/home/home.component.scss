@@ -1,1 +1,19 @@
 // component styles are encapsulated and only applied to their components
+.code {
+	white-space: pre;
+	font-family: monospace;
+	text-align: left;
+}
+
+#json-modal {
+	.modal-body {
+		overflow-y: auto;
+		height: 250px;
+		@media (min-height: 500px) {
+			height: 400px;
+		}
+		@media (min-height: 800px) {
+			height: 600px;
+		}
+	}
+}

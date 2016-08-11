@@ -38,7 +38,12 @@ public class RecorderController {
 
 		WebHook webHook = objectMapper.readValue(data, WebHook.class);
 		webHook.setInsertDate(now());
-		webHook.setJson(new String(data, UTF_8));
+
+		String json = new String(data, UTF_8);
+		Object object = objectMapper.readValue(json, Object.class);
+		json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+
+		webHook.setJson(json);
 		webHookRepository.insert(webHook);
 	}
 

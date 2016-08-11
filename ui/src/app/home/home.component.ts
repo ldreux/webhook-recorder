@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {CORE_DIRECTIVES, NgIf, NgClass} from '@angular/common';
 import {PAGINATION_DIRECTIVES, ModalDirective, MODAL_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {NG_TABLE_DIRECTIVES} from 'ng2-table';
@@ -6,13 +6,14 @@ import {Http, URLSearchParams, RequestOptions} from '@angular/http';
 import {FORM_DIRECTIVES} from '@angular/forms';
 import {WebHookTableComponent} from './table/webHookTable.component';
 import {WebHook} from '../model/WebHook';
-import {BeautifyJsonPipe} from "../pipe/beautifyJson.pipe";
+import {BeautifyJsonPipe} from '../pipe/beautifyJson.pipe';
 
 @Component({
     selector: 'my-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    directives: [MODAL_DIRECTIVES, NG_TABLE_DIRECTIVES, PAGINATION_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES, WebHookTableComponent, NgClass, NgIf],
+    directives: [MODAL_DIRECTIVES, NG_TABLE_DIRECTIVES, PAGINATION_DIRECTIVES, CORE_DIRECTIVES,
+        FORM_DIRECTIVES, WebHookTableComponent, NgClass, NgIf],
     pipes: [BeautifyJsonPipe]
 })
 export class HomeComponent implements OnInit {
@@ -32,12 +33,13 @@ export class HomeComponent implements OnInit {
     public length: number = 0;
     public maxSize: number = 5;
     public activeWebHook: WebHook;
+    public json: string = "";
 
     public config: any = {
         paging: true
     };
 
-    constructor(public http: Http) {
+    constructor(private http: Http, private el: ElementRef) {
     }
 
     ngOnInit() {
