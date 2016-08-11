@@ -3,3 +3,5 @@
   path: roles
   name: revo-app
 - name: jdauphant.nginx
+- name: ansible-java8-oracle
+  src: https://github.com/malk/ansible-java8-oracle.git

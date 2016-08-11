@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     }
 
     public onChangeTable(config: any, page: any = {page: this.page, itemsPerPage: this.itemsPerPage}): any {
-        this.http.get('/webhook', new RequestOptions({search: new URLSearchParams(`page=${this.page - 1}&size=${this.itemsPerPage}&sort=insertDate:DESC`)}))
+        this.http.get('/record', new RequestOptions({search: new URLSearchParams(`page=${this.page - 1}&size=${this.itemsPerPage}&sort=insertDate:DESC`)}))
             .map(res => res.json())
             .subscribe(data => {
                     //noinspection TypeScriptUnresolvedVariable

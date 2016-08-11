@@ -2,6 +2,7 @@
  - hosts: webhook-recorder
    sudo: yes
    roles:
+   - role: ansible-java8-oracle
    - role: revo-app
      xmx: 256m
      xms: 128m
@@ -17,9 +18,11 @@
    - role: jdauphant.nginx
      nginx_sites:
        webhook-recorder:
-         - listen 80
+         - listen 8080
          - server_name recorder.sarbacane.com
-         - location / {
-         - proxy_pass http://localhost:8080/
-         - "}"
+         - root "/var/www/webhook"
+         - location /record {
+             proxy_pass http://localhost:8081/webhook;
+           }
+         - location / { try_files $uri $uri/ /index.html; }
      tags: nginx

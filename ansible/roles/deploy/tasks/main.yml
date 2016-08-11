@@ -3,3 +3,7 @@
   copy: src="../target/{{app_name}}.jar" dest="/opt/sr-{{app_name}}/jar/sr-{{app_name}}.jar" force=yes
 - name: restart service
   service: name=sr-{{app_name}} state=restarted
+- name: create directory /var/www/webhook
+  file: path=/var/www/<ebhook state=directory mode=0755
+- name: copy webhook site
+  copy: src="../ui/dist/" dest=/var/www/webhook/

@@ -47,7 +47,7 @@ public class RecorderController {
 		webHookRepository.insert(webHook);
 	}
 
-	@RequestMapping
+	@RequestMapping("record")
 	public Page<WebHook> findAll(Pageable pageable) {
 		return webHookRepository.findAll(pageable);
 	}
